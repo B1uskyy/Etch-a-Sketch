@@ -5,23 +5,65 @@
 let body = document.body; 
 let container = document.querySelector("#container")
 
- for (let i = 0; i < 16; i++) {
-    for(let j = 0; j < 16; j++) {
-        let div = document.createElement("div"); 
-        div.innerHTML = "X"; 
-        div.classList.add("row"); 
-        div.classList.add("square"); 
-        document.body.appendChild(div) 
-    }
-    let br = document.createElement("br"); 
-    document.body.appendChild(br); 
 
+function createGrid(size) {
+    for (let i = 0; i < size; i++) {
+        for(let j = 0; j < size; j++) {
+            let div = document.createElement("div"); 
+            div.classList.add("row"); 
+            div.classList.add("square"); 
+            document.body.appendChild(div) 
+        }
+        let br = document.createElement("br"); 
+        document.body.appendChild(br); 
     
+        let divs = document.querySelectorAll("div"); 
 
- }
+        divs.forEach((div) => div.addEventListener("mouseover", function() {
+           div.style.backgroundColor = "blue"
+        }))
+    
+     }
+    
+}
 
- let divs = document.querySelectorAll("div"); 
+function removeGrid() {
+    let divs = document.querySelectorAll(".row");
+    
+    divs.forEach((div) => {
+        div.remove();
+    });
+    
+    let brs = document.querySelectorAll("br");
+    
+    brs.forEach((br) => {
+        br.remove();
+    });
+}
 
- divs.forEach((div) => div.addEventListener("mouseover", function() {
-    div.style.backgroundColor = "blue"
- }))
+
+
+
+
+
+ let button = document.querySelector("#create"); 
+
+
+ button.addEventListener("click", function() {
+    removeGrid(); 
+    let answer = prompt("How big do you want the grid to be? (maximum 100x100)")
+
+    if(answer > 100) {
+        alert("This grid is too large!!");
+    }
+
+    else {
+        createGrid(answer); 
+    }
+ })
+
+
+// TODO
+// Should take upo 960 px of space total, however big or small the grid is made
+
+ 

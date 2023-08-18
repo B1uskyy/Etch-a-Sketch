@@ -2,9 +2,14 @@
 .square {
     width: 25px;
     height: 25px;
+    outline: 1px solid black;
 }
 
 .row {
     display: inline-block;
+}
+
+#create {
+    margin: 25px;
 }
 
