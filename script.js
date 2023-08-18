@@ -3,24 +3,25 @@
  // Class of .square gives div square properties
 
 let body = document.body; 
+let container = document.querySelector("#container")
 
  for (let i = 0; i < 16; i++) {
-
-    let row = document.createElement("div"); 
-    row.className = "square";
-    row.classList.add("row"); 
-    row.innerHTML = "Z"
-
-
-    for (let l = 0; l < 15; l++) {
-        let cell = document.createElement("div");
-        // cell.classList.add("row")
-        cell.classList.add("square");
-        row.appendChild(cell)
-        cell.innerHTML = "X"; 
-
+    for(let j = 0; j < 16; j++) {
+        let div = document.createElement("div"); 
+        div.innerHTML = "X"; 
+        div.classList.add("row"); 
+        div.classList.add("square"); 
+        document.body.appendChild(div) 
     }
+    let br = document.createElement("br"); 
+    document.body.appendChild(br); 
 
-    body.appendChild(row); 
+    
 
  }
+
+ let divs = document.querySelectorAll("div"); 
+
+ divs.forEach((div) => div.addEventListener("mouseover", function() {
+    div.style.backgroundColor = "blue"
+ }))
