@@ -6,12 +6,27 @@ let body = document.body;
 let container = document.querySelector("#container")
 
 
+function createDiv(size) {
+    let containerSize = 960; // Total size in pixels
+    let cellSize = containerSize / size;
+
+    let div = document.createElement("div");
+    div.style.height = cellSize + "px";
+    div.style.width = cellSize + "px";
+    div.style.margin = 0;
+    div.style.padding = 0;
+    div.classList.add("row");
+    div.classList.add("square");
+    return div;
+}
+
+
+
+
 function createGrid(size) {
     for (let i = 0; i < size; i++) {
         for(let j = 0; j < size; j++) {
-            let div = document.createElement("div"); 
-            div.classList.add("row"); 
-            div.classList.add("square"); 
+            let div = createDiv(size);  
             document.body.appendChild(div) 
         }
         let br = document.createElement("br"); 
